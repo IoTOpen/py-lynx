@@ -1,5 +1,4 @@
 import pprint
-import urllib.parse
 from typing import Dict, Optional
 
 

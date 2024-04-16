@@ -7,7 +7,7 @@ packages = ["src/lynx"]
 
 [project]
 name = "iotopen-py-lynx"
-version = "1.0.4"
+version = "1.0.5"
 authors = [
     { name = "Jesper Falk", email = "jesper.falk@iotopen.se" },
 ]

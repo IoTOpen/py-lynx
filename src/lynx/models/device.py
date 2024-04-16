@@ -1,7 +1,7 @@
 import pprint
 from typing import Optional
 
-from src.lynx.models.shared import Meta, WithMeta
+from .shared import Meta, WithMeta
 
 
 class Device(WithMeta):

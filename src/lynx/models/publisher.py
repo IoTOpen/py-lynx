@@ -3,7 +3,7 @@ import pprint
 from typing import Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.lynx import EdgeApp
+    from . import EdgeApp
 
 
 class Publisher:

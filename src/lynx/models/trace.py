@@ -1,6 +1,6 @@
 import pprint
 
-from src.lynx.models import TraceAction, TraceObjectType
+from . import TraceAction, TraceObjectType
 
 
 class TraceEntry:

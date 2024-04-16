@@ -1,7 +1,7 @@
 import pprint
 from typing import Optional
 
-from src.lynx.models.shared import WithMeta, Meta
+from .shared import WithMeta, Meta
 
 
 class Installation(WithMeta):

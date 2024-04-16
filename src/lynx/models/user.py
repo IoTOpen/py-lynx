@@ -1,7 +1,7 @@
 import pprint
 from typing import Optional
 
-from src.lynx.models.shared import WithMeta, Meta, Address
+from .shared import WithMeta, Meta, Address
 
 
 class User(WithMeta):
