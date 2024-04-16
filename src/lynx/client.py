@@ -1,8 +1,8 @@
 from typing import Optional
 
-from src.lynx import *
-from src.lynx.api_client import APIClient
-from src.lynx.controller import *
+from . import *
+from .api_client import APIClient
+from .controller import *
 
 
 class Client:

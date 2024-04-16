@@ -1,8 +1,8 @@
 from typing import Optional
 
-from src.lynx import Function, Filter, MetaObject, OKResponse
-from src.lynx.api_client import APIClient
-from src.lynx.controller import Controller
+from .. import Function, Filter, MetaObject, OKResponse
+from ..api_client import APIClient
+from ..controller import Controller
 
 
 class FunctionController(Controller):

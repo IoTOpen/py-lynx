@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta
 from typing import Optional
 
-from src.lynx import LogEntry, LogPage
-from src.lynx.api_client import APIClient
-from src.lynx.controller import Controller
+from .. import LogEntry, LogPage
+from ..api_client import APIClient
+from ..controller import Controller
 
 
 class LogController(Controller):

@@ -1,7 +1,7 @@
 import urllib.parse
 from typing import Optional
 
-from src.lynx.api_client import APIClient
+from ..api_client import APIClient
 
 
 class Controller:

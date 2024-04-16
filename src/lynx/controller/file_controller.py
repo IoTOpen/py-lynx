@@ -1,6 +1,6 @@
-from src.lynx import File, OKResponse
-from src.lynx.api_client import APIClient
-from src.lynx.controller import Controller
+from .. import File, OKResponse
+from ..api_client import APIClient
+from ..controller import Controller
 
 
 class FileController(Controller):

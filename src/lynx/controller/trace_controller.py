@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta
 from typing import Optional
 
-from src.lynx import TracePage, TraceEntry
-from src.lynx.api_client import APIClient
-from src.lynx.controller import Controller
+from .. import TracePage, TraceEntry
+from ..api_client import APIClient
+from ..controller import Controller
 
 
 class TraceController(Controller):
