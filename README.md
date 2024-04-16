@@ -16,7 +16,7 @@ python3 -m pip install --upgrade iotopen-py-lynx
 Create a Lynx client and use the functions on it to make API-calls.
 
 ```python
-from iotopen-py-lynx import Client
+from lynx import Client
 
 cli = Client("https://lynx.iotopen.se", "abcdef123456789abcdef123456789")
 
