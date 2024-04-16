@@ -11,6 +11,9 @@ version = "1.0.6"
 authors = [
     { name = "Jesper Falk", email = "jesper.falk@iotopen.se" },
 ]
+dependencies = [
+    "requests"
+]
 description = "A wrapper library for the IoT Open Lynx API"
 readme = "README.md"
 requires-python = ">3.8"
