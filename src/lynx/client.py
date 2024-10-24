@@ -96,20 +96,19 @@ class Client:
     def delete_installation(self, installation: Installation):
         return self._installation_controller.delete_installation(installation)
 
-    def get_installation_meta(self, installation_id: int, id: int, key: str):
-        return self._installation_controller.get_installation_meta(installation_id, id, key)
+    def get_installation_meta(self, installation_id: int, key: str):
+        return self._installation_controller.get_installation_meta(installation_id, key)
 
-    def create_installation_meta(self, installation_id: int, id: int, key: str, meta: MetaObject,
+    def create_installation_meta(self, installation_id: int, key: str, meta: MetaObject,
                                  silent: Optional[bool] = False):
-        return self._installation_controller.create_installation_meta(installation_id, id, key, meta, silent)
+        return self._installation_controller.create_installation_meta(installation_id, key, meta, silent)
 
-    def update_installation_meta(self, installation_id: int, id: int, key: str, meta: MetaObject,
+    def update_installation_meta(self, installation_id: int, key: str, meta: MetaObject,
                                  silent: Optional[bool] = False, create_missing: Optional[bool] = False):
-        return self._installation_controller.update_installation_meta(installation_id, id, key, meta, silent,
-                                                                      create_missing)
+        return self._installation_controller.update_installation_meta(installation_id, key, meta, silent, create_missing)
 
-    def delete_installation_meta(self, installation_id: int, id: int, key: str, silent: Optional[bool] = False):
-        return self._installation_controller.delete_installation_meta(installation_id, id, key, silent)
+    def delete_installation_meta(self, installation_id: int, key: str, silent: Optional[bool] = False):
+        return self._installation_controller.delete_installation_meta(installation_id, key, silent)
 
     """
     Installation info
