@@ -242,7 +242,7 @@ except HTTPException as e:
 | Users             | `get_me`, `update_me`, `get_users`, `get_user`, `create_user`, `update_user`, `delete_user`, `*_user_meta`                         |
 | Organizations     | `get_organizations`, `get_organization`, `create_organization`, `update_organization`, `delete_organization`, `force_password_reset`, `*_organization_meta` |
 | Notifications     | `get_notification_messages`, `get_notification_outputs`, `get_notification_output_executors`, `send_notification` and CRUD        |
-| Edge apps         | `get_edge_apps`, `get_edge_app`, `get_edge_app_versions`, `get_edge_app_instances` and CRUD                                       |
+| Edge apps         | `get_edge_apps`, `get_edge_app`, `get_edge_app_publisher`, `get_edge_app_versions`, `get_edge_app_instances` and CRUD                                |
 | Files             | `get_files_installation`, `get_files_organization`, `delete_file_installation`, `delete_file_organization`                         |
 | Trace             | `get_traces`                                                                                                                       |
 

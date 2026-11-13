@@ -1,6 +1,6 @@
 from typing import Optional
 
-from .. import EdgeApp, EdgeAppVersion, EdgeAppConfig, OKResponse
+from .. import EdgeApp, EdgeAppVersion, EdgeAppConfig, OKResponse, Publisher
 from ..api_client import APIClient
 from ..controller import Controller
 
@@ -30,6 +30,14 @@ class EdgeAppController(Controller):
         path = "api/v2/edge/app/{0}".format(id)
         resp = self._api_client.request("GET", path)
         return EdgeApp(**resp)
+
+    def get_edge_app_publisher(self, organization_id: int):
+        path = "api/v2/edge/publisher/{0}".format(organization_id)
+        resp = self._api_client.request("GET", path)
+        apps = []
+        for x in resp.get("apps") or []:
+            apps.append(EdgeApp(**x))
+        return Publisher(resp["name"], resp["id"], apps)
 
     def create_edge_app(self, app: EdgeApp):
         path = "api/v2/edge/app"

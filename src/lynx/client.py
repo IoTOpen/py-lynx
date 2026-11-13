@@ -290,6 +290,9 @@ class Client:
     def get_edge_app(self, id: int):
         return self._edge_app_controller.get_edge_app(id)
 
+    def get_edge_app_publisher(self, organization_id: int):
+        return self._edge_app_controller.get_edge_app_publisher(organization_id)
+
     def create_edge_app(self, app: EdgeApp):
         return self._edge_app_controller.create_edge_app(app)
 
