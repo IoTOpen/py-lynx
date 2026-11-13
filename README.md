@@ -90,6 +90,22 @@ devices = cli.get_devices(1234)
 device = cli.get_device(1234, 7)
 ```
 
+### Search
+
+`search` finds installations, devices and functions by name, description,
+metadata or ID across everything you have access to. Use `*` as a wildcard.
+
+```python
+result = cli.search("kitchen*", types=["function"], metadata={"unit": "°C"})
+
+print(result.total, "matches")
+for entry in result.results:
+    print(entry.type, entry.id, entry.name, entry.installation_id)
+```
+
+Results are paginated with `limit` and `offset`. The search endpoint is in beta
+in the Lynx API.
+
 ### Read current values
 
 `get_status` returns the latest known value for every topic in an installation.
@@ -215,6 +231,28 @@ outputs = cli.get_notification_outputs(1234)
 cli.send_notification(1234, outputs[0].id, {"message": "Hello from Python"})
 ```
 
+### Files
+
+Files can be stored on an installation or an organization. `file` can be bytes
+or an open file.
+
+```python
+with open("floorplan.png", "rb") as f:
+    file = cli.create_file_installation(1234, "floorplan.png", "image/png", f)
+
+print(file.id, file.hash)
+
+for f in cli.get_files_installation(1234):
+    print(f.id, f.name, f.mime)
+
+data = cli.download_file(file.hash)  # bytes
+
+cli.update_file_installation(1234, file.id, "floorplan.png", "image/png", data)
+cli.delete_file_installation(1234, file.id)
+```
+
+The same methods exist for organizations, for example `create_file_organization`.
+
 ### Roles and permissions
 
 `get_permissions` returns what the authenticated user is allowed to do, as a
@@ -275,7 +313,8 @@ except HTTPException as e:
 | Organizations     | `get_organizations`, `get_organization`, `create_organization`, `update_organization`, `delete_organization`, `force_password_reset`, `*_organization_meta` |
 | Notifications     | `get_notification_messages`, `get_notification_outputs`, `get_notification_output_executors`, `send_notification` and CRUD        |
 | Edge apps         | `get_edge_apps`, `get_edge_app`, `get_edge_app_publisher`, `get_edge_app_versions`, `get_edge_app_instances` and CRUD                                |
-| Files             | `get_files_installation`, `get_files_organization`, `delete_file_installation`, `delete_file_organization`                         |
+| Search            | `search`                                                                                                                           |
+| Files             | `get_files_*`, `get_file_*`, `create_file_*`, `update_file_*`, `delete_file_*` (installation and organization), `download_file`  |
 | Roles             | `get_roles`, `get_role`, `create_role`, `update_role`, `delete_role`, `get_permissions`                                            |
 | Trace             | `get_traces`                                                                                                                       |
 

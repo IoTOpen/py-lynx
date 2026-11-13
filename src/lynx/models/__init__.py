@@ -13,6 +13,7 @@ from .edge_app import EdgeApp, EdgeAppVersion, EdgeAppConfig
 from .publisher import Publisher
 from .file import File
 from .role import Role
+from .search import SearchEntry, SearchResult
 
 from .shared import Address, MetaObject, Meta, Filter
 

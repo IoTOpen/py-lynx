@@ -354,11 +354,11 @@ class Client:
     def create_file_organization(self, organization_id: int, file_name: str, mime: str, file):
         return self._file_controller.create_file_organization(organization_id, file_name, mime, file)
 
-    def update_file_installation(self, installation_id: int, file_name: str, mime: str, file):
-        return self._file_controller.update_file_installation(installation_id, file_name, mime, file)
+    def update_file_installation(self, installation_id: int, file_id: int, file_name: str, mime: str, file):
+        return self._file_controller.update_file_installation(installation_id, file_id, file_name, mime, file)
 
-    def update_file_organization(self, organization_id: int, file_name: str, mime: str, file):
-        return self._file_controller.update_file_organization(organization_id, file_name, mime, file)
+    def update_file_organization(self, organization_id: int, file_id: int, file_name: str, mime: str, file):
+        return self._file_controller.update_file_organization(organization_id, file_id, file_name, mime, file)
 
     def delete_file_installation(self, installation_id: int, file_id: int):
         return self._file_controller.delete_file_installation(installation_id, file_id)
@@ -399,6 +399,14 @@ class Client:
         return self._role_controller.get_permissions()
 
     """
+    Search
+    """
+
+    def search(self, query: str = "*", types: Optional[list[str]] = None, limit: Optional[int] = None,
+               offset: Optional[int] = None, metadata: Optional[dict[str, str]] = None):
+        return self._search_controller.search(query, types, limit, offset, metadata)
+
+    """
     Internal
     """
 
@@ -417,3 +425,4 @@ class Client:
         self._file_controller = FileController(self.api_client)
         self._mqtt_controller = MQTTController(self.api_client)
         self._role_controller = RoleController(self.api_client)
+        self._search_controller = SearchController(self.api_client)
