@@ -131,7 +131,7 @@ class Schedule:
             "executor": self.executor,
             "active": self.active,
             "day_of_week": self.day_of_week,
-            "dat_of_month": self.day_of_month,
+            "day_of_month": self.day_of_month,
             "month": self.month,
             "hour": self.hour,
             "minute": self.minute,
