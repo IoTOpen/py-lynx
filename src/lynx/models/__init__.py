@@ -12,6 +12,7 @@ from .log import LogEntry, LogPage
 from .edge_app import EdgeApp, EdgeAppVersion, EdgeAppConfig
 from .publisher import Publisher
 from .file import File
+from .role import Role
 
 from .shared import Address, MetaObject, Meta, Filter
 

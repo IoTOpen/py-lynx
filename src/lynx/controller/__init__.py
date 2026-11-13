@@ -12,3 +12,4 @@ from .log_controller import LogController
 from .edge_app_controller import EdgeAppController
 from .file_controller import FileController
 from .mqtt_controller import MQTTController
+from .role_controller import RoleController

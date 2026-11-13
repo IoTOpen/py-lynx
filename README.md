@@ -215,6 +215,38 @@ outputs = cli.get_notification_outputs(1234)
 cli.send_notification(1234, outputs[0].id, {"message": "Hello from Python"})
 ```
 
+### Roles and permissions
+
+`get_permissions` returns what the authenticated user is allowed to do, as a
+map from permission to `True`/`False`. Permissions follow the MQTT topic
+pattern, where `+` and `#` are wildcards. Permissions that are not listed are
+not allowed.
+
+```python
+permissions = cli.get_permissions()
+print(permissions.get("device/#", False))
+```
+
+Roles group permissions together:
+
+```python
+from lynx import Role
+
+for role in cli.get_roles():
+    print(role.id, role.name, role.priority)
+
+role = cli.create_role(Role(
+    name="Viewer",
+    permissions={"functionx/+/add": True},
+    priority=10,
+))
+
+role.name = "Read only"
+cli.update_role(role)
+
+cli.delete_role(role)
+```
+
 ### Error handling
 
 API errors raise `HTTPException`, which carries the HTTP status code and the
@@ -244,6 +276,7 @@ except HTTPException as e:
 | Notifications     | `get_notification_messages`, `get_notification_outputs`, `get_notification_output_executors`, `send_notification` and CRUD        |
 | Edge apps         | `get_edge_apps`, `get_edge_app`, `get_edge_app_publisher`, `get_edge_app_versions`, `get_edge_app_instances` and CRUD                                |
 | Files             | `get_files_installation`, `get_files_organization`, `delete_file_installation`, `delete_file_organization`                         |
+| Roles             | `get_roles`, `get_role`, `create_role`, `update_role`, `delete_role`, `get_permissions`                                            |
 | Trace             | `get_traces`                                                                                                                       |
 
 `*_meta` means `get_`, `create_`, `update_` and `delete_` variants.

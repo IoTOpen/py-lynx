@@ -377,6 +377,28 @@ class Client:
         return self._mqtt_controller.publish(installation_id, topic, payload)
 
     """
+    Role
+    """
+
+    def get_roles(self):
+        return self._role_controller.get_roles()
+
+    def get_role(self, id: int):
+        return self._role_controller.get_role(id)
+
+    def create_role(self, role: Role):
+        return self._role_controller.create_role(role)
+
+    def update_role(self, role: Role):
+        return self._role_controller.update_role(role)
+
+    def delete_role(self, role: Role):
+        return self._role_controller.delete_role(role)
+
+    def get_permissions(self):
+        return self._role_controller.get_permissions()
+
+    """
     Internal
     """
 
@@ -394,3 +416,4 @@ class Client:
         self._edge_app_controller = EdgeAppController(self.api_client)
         self._file_controller = FileController(self.api_client)
         self._mqtt_controller = MQTTController(self.api_client)
+        self._role_controller = RoleController(self.api_client)
