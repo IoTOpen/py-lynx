@@ -7,7 +7,7 @@ packages = ["src/lynx"]
 
 [project]
 name = "iotopen-py-lynx"
-version = "1.0.8"
+version = "1.1.0"
 authors = [
     { name = "Jesper Falk", email = "jesper.falk@iotopen.se" },
 ]
@@ -16,7 +16,7 @@ dependencies = [
 ]
 description = "A wrapper library for the IoT Open Lynx API"
 readme = "README.md"
-requires-python = ">3.8"
+requires-python = ">=3.9"
 classifiers = [
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",

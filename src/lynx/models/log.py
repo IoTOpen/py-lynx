@@ -1,8 +1,10 @@
 import pprint
+from typing import Optional
 
 
 class LogEntry:
-    def __init__(self, client_id: int, installation_id: int, msg: str, timestamp: float, topic: str, value: float):
+    def __init__(self, client_id: int, installation_id: int, timestamp: float, topic: str, value: float,
+                 msg: Optional[str] = None):
         self._client_id = client_id
         self._installation_id = installation_id
         self._msg = msg

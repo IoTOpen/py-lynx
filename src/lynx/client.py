@@ -149,6 +149,9 @@ class Client:
                          create_missing: Optional[bool] = False):
         return self._user_controller.update_user_meta(id, key, meta, silent, create_missing)
 
+    def delete_user_meta(self, id: int, key: str, silent: Optional[bool] = False):
+        return self._user_controller.delete_user_meta(id, key, silent)
+
     def get_me(self):
         return self._user_controller.get_me()
 
@@ -287,6 +290,9 @@ class Client:
     def get_edge_app(self, id: int):
         return self._edge_app_controller.get_edge_app(id)
 
+    def get_edge_app_publisher(self, organization_id: int):
+        return self._edge_app_controller.get_edge_app_publisher(organization_id)
+
     def create_edge_app(self, app: EdgeApp):
         return self._edge_app_controller.create_edge_app(app)
 
@@ -348,11 +354,11 @@ class Client:
     def create_file_organization(self, organization_id: int, file_name: str, mime: str, file):
         return self._file_controller.create_file_organization(organization_id, file_name, mime, file)
 
-    def update_file_installation(self, installation_id: int, file_name: str, mime: str, file):
-        return self._file_controller.update_file_installation(installation_id, file_name, mime, file)
+    def update_file_installation(self, installation_id: int, file_id: int, file_name: str, mime: str, file):
+        return self._file_controller.update_file_installation(installation_id, file_id, file_name, mime, file)
 
-    def update_file_organization(self, organization_id: int, file_name: str, mime: str, file):
-        return self._file_controller.update_file_organization(organization_id, file_name, mime, file)
+    def update_file_organization(self, organization_id: int, file_id: int, file_name: str, mime: str, file):
+        return self._file_controller.update_file_organization(organization_id, file_id, file_name, mime, file)
 
     def delete_file_installation(self, installation_id: int, file_id: int):
         return self._file_controller.delete_file_installation(installation_id, file_id)
@@ -362,6 +368,43 @@ class Client:
 
     def download_file(self, hash: str):
         return self._file_controller.download_file(hash)
+
+    """
+    MQTT
+    """
+
+    def mqtt_publish(self, installation_id: int, topic: str, payload: any):
+        return self._mqtt_controller.publish(installation_id, topic, payload)
+
+    """
+    Role
+    """
+
+    def get_roles(self):
+        return self._role_controller.get_roles()
+
+    def get_role(self, id: int):
+        return self._role_controller.get_role(id)
+
+    def create_role(self, role: Role):
+        return self._role_controller.create_role(role)
+
+    def update_role(self, role: Role):
+        return self._role_controller.update_role(role)
+
+    def delete_role(self, role: Role):
+        return self._role_controller.delete_role(role)
+
+    def get_permissions(self):
+        return self._role_controller.get_permissions()
+
+    """
+    Search
+    """
+
+    def search(self, query: str = "*", types: Optional[list[str]] = None, limit: Optional[int] = None,
+               offset: Optional[int] = None, metadata: Optional[dict[str, str]] = None):
+        return self._search_controller.search(query, types, limit, offset, metadata)
 
     """
     Internal
@@ -380,3 +423,6 @@ class Client:
         self._log_controller = LogController(self.api_client)
         self._edge_app_controller = EdgeAppController(self.api_client)
         self._file_controller = FileController(self.api_client)
+        self._mqtt_controller = MQTTController(self.api_client)
+        self._role_controller = RoleController(self.api_client)
+        self._search_controller = SearchController(self.api_client)
