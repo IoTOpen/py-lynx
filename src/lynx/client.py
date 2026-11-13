@@ -149,6 +149,9 @@ class Client:
                          create_missing: Optional[bool] = False):
         return self._user_controller.update_user_meta(id, key, meta, silent, create_missing)
 
+    def delete_user_meta(self, id: int, key: str, silent: Optional[bool] = False):
+        return self._user_controller.delete_user_meta(id, key, silent)
+
     def get_me(self):
         return self._user_controller.get_me()
 
@@ -364,6 +367,13 @@ class Client:
         return self._file_controller.download_file(hash)
 
     """
+    MQTT
+    """
+
+    def mqtt_publish(self, installation_id: int, topic: str, payload: any):
+        return self._mqtt_controller.publish(installation_id, topic, payload)
+
+    """
     Internal
     """
 
@@ -380,3 +390,4 @@ class Client:
         self._log_controller = LogController(self.api_client)
         self._edge_app_controller = EdgeAppController(self.api_client)
         self._file_controller = FileController(self.api_client)
+        self._mqtt_controller = MQTTController(self.api_client)

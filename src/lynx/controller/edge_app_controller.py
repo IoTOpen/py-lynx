@@ -37,7 +37,7 @@ class EdgeAppController(Controller):
         return EdgeApp(**resp)
 
     def update_edge_app(self, app: EdgeApp):
-        path = "api/v2/edge/app/{0}".format(app.id)
+        path = "api/v2/edge/app"
         resp = self._api_client.request("PUT", path, json=app.to_dict())
         return EdgeApp(**resp)
 
@@ -61,12 +61,12 @@ class EdgeAppController(Controller):
         raise Exception("Not implemented")
 
     def name_edge_app_version(self, id: int, version: EdgeAppVersion):
-        path = "api/v2/edge/app/{0}/publish}".format(id)
+        path = "api/v2/edge/app/{0}/publish".format(id)
         resp = self._api_client.request("POST", path, json=version.to_dict())
         return EdgeAppVersion(**resp)
 
     def get_edge_app_config_options(self, id: int, version: str):
-        path = "api/v2/edge/app/{0}/configure}".format(id, self.format_query_string({"version": version}))
+        path = "api/v2/edge/app/{0}/configure{1}".format(id, self.format_query_string({"version": version}))
         return self._api_client.request("GET", path)
 
     def get_edge_app_instances(self, installation_id: int):
